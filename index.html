@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<style type="text/css">
+		html { height: 100% }
+		body { height: 100%; margin: 0px; padding: 0px; background: #222; color: #bbb; }
+		#map_canvas { height:100%; margin-left:400px; padding:10px;}
+		#side_panel { position:absolute; width:380px; height: 100%; overflow:auto; float:left; padding:10px; background-color: rgb(240,240,240);}
+		.code-box {cursor: pointer;}
+	</style>
+
+	<!-- Access jQuery Library -->
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Josefin+Slab:700' rel='stylesheet' type='text/css'>
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+	<!-- Google Maps API -->
+	<script type="text/javascript" src="js/codes.js"></script>
+
+</head>
+<body style="width: 900px;">
+
+	<div id="side_panel">
+	
+	<h4>Interviewee's:</h4>
+	<div id="people" class="well"></div>
+	<h4>Codes:</h4>
+	<ol>
+		<li id="c1">Walk
+			<ol>
+				<li>Safety (S1)<br><span class="code-box" id="cS1"></li>
+				<li>Environment (E1)<br><span class="code-box" id="cE1"></li>
+				<li>Cost/Money (M1)<br><span class="code-box" id="cM1"></li>
+				<li>Time (T1)<br><span class="code-box" id="cT1"></li>
+				<li>Enjoyment (H1)<br><span class="code-box" id="cH1"></li>
+				<li>Convenience (C1)<br><span class="code-box" id="cC1"></li>
+				<li>Parking (P1)<br><span class="code-box" id="cP1"></li>
+				<li>Anxiety,frustration (F1)<br><span class="code-box" id="cF1"></li>
+				<li>UCLA services (U1)<br><span class="code-box" id="cU1"></li>
+				<li>Interaction (I)<br><span iI="cI1"></li>
+				<li>Study/Work (W)<br><span iW="cW1"></li>
+				<li>Sleep (L)<br><span iL="cL1"></li>
+				<li>Kids (K)<br><span class="code-box" id="cK1"></span></li>
+				<li>Only option (O)<br><span class="code-box" id="cO1"></span></li>
+			</ol>
+		</li>
+		<li id="c2">Bike
+			<ol>
+				<li>Safety (S2)<br><span class="code-box" id="cS2"></span></li>
+				<li>Environment (E2)<br><span class="code-box" id="cE2"></span></li>
+				<li>Cost/Money (M2)<br><span class="code-box" id="cM2"></span></li>
+				<li>Time (T2)<br><span class="code-box" id="cT2"></span></li>
+				<li>Enjoyment (H2)<br><span class="code-box" id="cH2"></span></li>
+				<li>Convenience (C2)<br><span class="code-box" id="cC2"></span></li>
+				<li>Parking (P2)<br><span class="code-box" id="cP2"></span></li>
+				<li>Anxiety,frustration (F2)<br><span class="code-box" id="cF2"></span></li>
+				<li>UCLA services (U2)<br><span class="code-box" id="cU2"></span></li>
+				<li>Interaction (I)<br><span class="code-box" id="cI2"></span></li>
+				<li>Study/Work (W)<br><span class="code-box" id="cW2"></span></li>
+				<li>Sleep (L)<br><span class="code-box" id="cL2"></span></li>
+				<li>Health (A)<br><span class="code-box" id="cA2"></span></li>
+				<li>Kids (K)<br><span class="code-box" id="cK2"></span></li>
+				<li>Only option (O)<br><span class="code-box" id="cO2"></span></li>
+			</ol>
+		</li>
+		<li id="c3">Public Transit
+			<ol>
+				<li>Safety (S3)<br><span class="code-box" id="cS3"></span></li>
+				<li>Environment (E3)<br><span class="code-box" id="cE3"></span></li>
+				<li>Cost/Money (M3)<br><span class="code-box" id="cM3"></span></li>
+				<li>Time (T3)<br><span class="code-box" id="cT3"></span></li>
+				<li>Enjoyment (H3)<br><span class="code-box" id="cH3"></span></li>
+				<li>Convenience (C3)<br><span class="code-box" id="cC3"></span></li>
+				<li>Parking (P3)<br><span class="code-box" id="cP3"></span></li>
+				<li>Anxiety,frustration (F3)<br><span class="code-box" id="cF3"></span></li>
+				<li>UCLA services (U3)<br><span class="code-box" id="cU3"></span></li>
+				<li>Interaction (I)<br><span class="code-box" id="cI3"></span></li>
+				<li>Study/Work (W)<br><span class="code-box" id="cW3"></span></li>
+				<li>Sleep (L)<br><span class="code-box" id="cL3"></span></li>
+				<li>Health (A)<br><span class="code-box" id="cA3"></span></li>
+				<li>Kids (K)<br><span class="code-box" id="cK3"></span></li>
+				<li>Only option (O)<br><span class="code-box" id="cO3"></span></li>
+			</ol>
+		</li>
+		<li id="c4">Bruin Bus
+			<ol>
+				<li>Safety (S4)<br><span class="code-box" id="cS4"></span></li>
+				<li>Environment (E4)<br><span class="code-box" id="cE4"></span></li>
+				<li>Cost/Money (M4)<br><span class="code-box" id="cM4"></span></li>
+				<li>Time (T4)<br><span class="code-box" id="cT4"></span></li>
+				<li>Enjoyment (H4)<br><span class="code-box" id="cH4"></span></li>
+				<li>Convenience (C4)<br><span class="code-box" id="cC4"></span></li>
+				<li>Parking (P4)<br><span class="code-box" id="cP4"></span></li>
+				<li>Anxiety,frustration (F4)<br><span class="code-box" id="cF4"></span></li>
+				<li>UCLA services (U4)<br><span class="code-box" id="cU4"></span></li>
+				<li>Interaction (I)<br><span class="code-box" id="cI4"></span></li>
+				<li>Study/Work (W)<br><span class="code-box" id="cW4"></span></li>
+				<li>Sleep (L)<br><span class="code-box" id="cL4"></span></li>
+				<li>Health (A)<br><span class="code-box" id="cA4"></span></li>
+				<li>Kids (K)<br><span class="code-box" id="cK4"></span></li>
+				<li>Only option (O)<br><span class="code-box" id="cO4"></span></li>
+			</ol>
+		</li>
+		<li id="c5">Car
+			<ol>
+				<li>Safety (S5)<br><span class="code-box" id="cS5"></span></li>
+				<li>Environment (E5)<br><span class="code-box" id="cE5"></span></li>
+				<li>Cost/Money (M5)<br><span class="code-box" id="cM5"></span></li>
+				<li>Time (T5)<br><span class="code-box" id="cT5"></span></li>
+				<li>Enjoyment (H5)<br><span class="code-box" id="cH5"></span></li>
+				<li>Convenience (C5)<br><span class="code-box" id="cC5"></span></li>
+				<li>Parking (P5)<br><span class="code-box" id="cP5"></span></li>
+				<li>Anxiety,frustration (F5)<br><span class="code-box" id="cF5"></span></li>
+				<li>UCLA services (U5)<br><span class="code-box" id="cU5"></span></li>
+				<li>Interaction (I)<br><span class="code-box" id="cI5"></span></li>
+				<li>Study/Work (W)<br><span class="code-box" id="cW5"></span></li>
+				<li>Sleep (L)<br><span class="code-box" id="cL5"></span></li>
+				<li>Health (A)<br><span class="code-box" id="cA5"></span></li>
+				<li>Kids (K)<br><span class="code-box" id="cK5"></span></li>
+				<li>Only option (O)<br><span class="code-box" id="cO5"></span></li>
+			</ol>
+		</li>
+		<li id="c6">Motorcycle
+			<ol>
+				<li>Safety (S6)<br><span class="code-box" id="cS6"></span></li>
+				<li>Environment (E6)<br><span class="code-box" id="cE6"></span></li>
+				<li>Cost/Money (M6)<br><span class="code-box" id="cM6"></span></li>
+				<li>Time (T6)<br><span class="code-box" id="cT6"></span></li>
+				<li>Enjoyment (H6)<br><span class="code-box" id="cH6"></span></li>
+				<li>Convenience (C6)<br><span class="code-box" id="cC6"></span></li>
+				<li>Parking (P6)<br><span class="code-box" id="cP6"></span></li>
+				<li>Anxiety,frustration (F6)<br><span class="code-box" id="cF6"></span></li>
+				<li>UCLA services (U6)<br><span class="code-box" id="cU6"></span></li>
+				<li>Interaction (I)<br><span class="code-box" id="cI6"></span></li>
+				<li>Study/Work (W)<br><span class="code-box" id="cW6"></span></li>
+				<li>Sleep (L)<br><span class="code-box" id="cL6"></span></li>
+				<li>Health (A)<br><span class="code-box" id="cA6"></span></li>
+				<li>Kids (K)<br><span class="code-box" id="cK6"></span></li>
+				<li>Only option (O)<br><span class="code-box" id="cO6"></span></li>
+			</ol>
+		</li>
+		<li id="c7">Car/van pool
+			<ol>
+				<li>Safety (S7)<br><span class="code-box" id="cS7"></span></li>
+				<li>Environment (E7)<br><span class="code-box" id="cE7"></span></li>
+				<li>Cost/Money (M7)<br><span class="code-box" id="cM7"></span></li>
+				<li>Time (T7)<br><span class="code-box" id="cT7"></span></li>
+				<li>Enjoyment (H7)<br><span class="code-box" id="cH7"></span></li>
+				<li>Convenience (C7)<br><span class="code-box" id="cC7"></span></li>
+				<li>Parking (P7)<br><span class="code-box" id="cP7"></span></li>
+				<li>Anxiety,frustration (F7)<br><span class="code-box" id="cF7"></span></li>
+				<li>UCLA services (U7)<br><span class="code-box" id="cU7"></span></li>
+				<li>Interaction (I)<br><span class="code-box" id="cI7"></span></li>
+				<li>Study/Work (W)<br><span class="code-box" id="cW7"></span></li>
+				<li>Sleep (L)<br><span class="code-box" id="cL7"></span></li>
+				<li>Health (A)<br><span class="code-box" id="cA7"></span></li>
+				<li>Kids (K)<br><span class="code-box" id="cK7"></span></li>
+				<li>Only option (O)<br><span class="code-box" id="cO7"></span></li>
+			</ol>
+		</li>
+		<li id="c8">Other
+			<ol>
+				<li>Safety (S8)<br><span class="code-box" id="cS8"></span></li>
+				<li>Environment (E8)<br><span class="code-box" id="cE8"></span></li>
+				<li>Cost/Money (M8)<br><span class="code-box" id="cM8"></span></li>
+				<li>Time (T8)<br><span class="code-box" id="cT8"></span></li>
+				<li>Enjoyment (H8)<br><span class="code-box" id="cH8"></span></li>
+				<li>Convenience (C8)<br><span class="code-box" id="cC8"></span></li>
+				<li>Parking (P8)<br><span class="code-box" id="cP8"></span></li>
+				<li>Anxiety,frustration (F8)<br><span class="code-box" id="cF8"></span></li>
+				<li>UCLA services (U8)<br><span class="code-box" id="cU8"></span></li>
+				<li>Interaction (I)<br><span class="code-box" id="cI8"></span></li>
+				<li>Study/Work (W)<br><span class="code-box" id="cW8"></span></li>
+				<li>Sleep (L)<br><span class="code-box" id="cL8"></span></li>
+				<li>Health (A)<br><span class="code-box" id="cA8"></span></li>
+				<li>Kids (K)<br><span class="code-box" id="cK8"></span></li>
+				<li>Only option (O)<br><span class="code-box" id="cO8"></span></li>
+			</ol>
+		</li>
+	</ol>
+
+	</div>
+
+	<!-- map div -->
+	<div id="map_canvas" style="overflow:auto;">
+		<div id="output">
+			<h6>Directions</h6>
+			<ul>
+				<li>Click on an interviewee to see the entire transcript</li>
+				<li>Click on a code (colored box) to see specific codes</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
