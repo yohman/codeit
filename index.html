@@ -32,6 +32,13 @@
 
 	<div id="side_panel">
 	
+	<h4>Open Text Search:</h4>
+
+	<div class="form-inline">
+		<input type="text" class="form-control" id="search-text" placeholder="search text" tabindex="1">
+		<button class="btn btn-default" onclick="codeit.search()" tabindex="2">search</button>
+	</div>
+
 	<h4>Interviewee's:</h4>
 	<div id="people" class="well"></div>
 	<h4>Codes:</h4>
@@ -193,9 +200,13 @@
 
 	<!-- map div -->
 	<div id="map_canvas" style="overflow:auto;">
+		<div>
+			<h4 id="output-title"></h4>
+		</div>
 		<div id="output">
-			<h6>Directions</h6>
+			<h4>How to search your transcripts</h4>
 			<ul>
+				<li>Enter a search term on the left
 				<li>Click on an interviewee to see the entire transcript</li>
 				<li>Click on a code (colored box) to see specific codes</li>
 			</ul>

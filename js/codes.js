@@ -33,7 +33,7 @@ codeit.initialize = function()
 {
 	// Load People
 	$.each(codeit.people,function(i,val){
-		$('#people').append('<li style="cursor:pointer;color:'+codeit.colors[i]+'" onclick="applyperson(\''+val+'\')">'+val+'</li>');
+		$('#people').append('<li style="cursor:pointer;color:'+codeit.colors[i]+'" onclick="codeit.applyperson(\''+val+'\')">'+val+'</li>');
 	})
 
 	//get transcripts
@@ -44,7 +44,7 @@ codeit.initialize = function()
 	//button filters
 	$.each(codeit.validcodes,function(i,val){
 		$('#c'+val)	.click(function(){ 
-			applycode(val);
+			codeit.applycode(val);
 		});
 	})
 }
@@ -82,9 +82,11 @@ codeit.loadSpreadsheetData = function(pos,url)
 	})
 }
 
-function applycode(code)
+codeit.applycode = function(code)
 {
 	$('#output').empty();
+	$('#output-title').html('Transripts for code "'+code+'"');
+
 	$.each(transcripts,function(i,val1){
 		$.each(val1,function(j,val2){
 			var transcript= val2.gsx$transcript.$t;
@@ -101,9 +103,14 @@ function applycode(code)
 	});
 }
 
-function applyperson(liveperson)
+codeit.applyperson = function(liveperson)
 {
 	$('#output').empty();
+	$('#output-title').empty();
+
+	$('#output-title').html('Transcripts for '+liveperson);
+
+
 	$.each(transcripts,function(i,val1){
 		$.each(val1,function(j,val2){
 			var transcript= val2.gsx$transcript.$t;
@@ -121,5 +128,28 @@ function applyperson(liveperson)
 				}			
 			}
 			})	
+	});
+}
+
+codeit.search = function()
+{
+	$('#output-title').empty();
+	$('#output').empty();
+
+	var searchterm = $('#search-text').val();
+	$('#output-title').html('Search results for "'+searchterm+'"');
+
+	$.each(transcripts,function(i,val1){
+		$.each(val1,function(j,val2){
+			var transcript= val2.gsx$transcript.$t;
+			var codes = val2.gsx$codesappliedleaveblank.$t;
+			if(transcript.search(searchterm)>=0)
+			{
+				$('#output').append('<b style="color:'+val2.color+'">'+val2.interviewee+'</b><br>')
+				$('#output').append('<span style="color:red">'+codes+'</span><br>')
+				$('#output').append(transcript)
+				$('#output').append('<br><br>')
+			}			
+		})	
 	});
 }
